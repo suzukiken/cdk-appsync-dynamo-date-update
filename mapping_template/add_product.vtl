@@ -1,0 +1,15 @@
+#set( $id = $utils.autoId() )
+#set( $created = $util.time.nowISO8601() )
+
+{
+  "version" : "2017-02-28",
+  "operation" : "PutItem",
+  "key" : {
+    "id" : $util.dynamodb.toDynamoDBJson($id)
+  },
+  "attributeValues" : {
+    "title" : $util.dynamodb.toDynamoDBJson($context.arguments.input.title),
+    "created" : $util.dynamodb.toDynamoDBJson($created),
+    "updated" : $util.dynamodb.toDynamoDBJson($created)
+  }
+}
